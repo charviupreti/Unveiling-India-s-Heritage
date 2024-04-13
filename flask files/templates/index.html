@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <title>Monument Classifier</title>
+</head>
+<body>
+    <h1>Monument Classifier</h1>
+    <form id="upload-form" action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" id="file-input" name="file" accept="image/*" onchange="previewImage(event)">
+        <input type="submit" value="Predict">
+    </form>
+   
+    <div id="image-container">
+        <img id="uploaded-image" src="#" alt="">
+    </div>
+
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var image = document.getElementById('uploaded-image');
+                image.src = reader.result;
+                localStorage.setItem('uploadedImage', reader.result);
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        
+        window.onload = function() {
+            var uploadedImageData = localStorage.getItem('uploadedImage');
+            if (uploadedImageData) {
+                var image = document.getElementById('uploaded-image');
+                image.src = uploadedImageData;
+            }
+        };
+    </script>
+
+<div id="result">
+    {% if predicted_class %}
+        Predicted class: {{ predicted_class }}
+    {% endif %}
+</div>
+</body>
+</html>

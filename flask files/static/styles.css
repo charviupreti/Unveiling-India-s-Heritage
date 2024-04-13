@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+input[type="file"] {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+#result {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#image-container {
+    text-align: center;
+}
+
+#uploaded-image {
+    margin: 50px;
+    display: inline-block;
+    max-height: 300px;
+}
