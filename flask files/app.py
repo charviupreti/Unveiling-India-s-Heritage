@@ -5,6 +5,9 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import numpy as np
 import io
+from Translate import translate_it
+from Wiki import summarize, get_monument_name
+
 
 app = Flask(__name__)
 
@@ -36,7 +39,14 @@ def predict():
         img_array = np.expand_dims(img_array, axis=0)
         predicted_label = model.predict(img_array)
         predicted_class = label_mapping[np.argmax(predicted_label)]
-        return render_template("index.html", predicted_class=predicted_class)
+        summary = summarize(predicted_class)
+        lang = request.form.get("language")
+        translated = translate_it(summary[:500], lang)
+        return render_template(
+            "index.html",
+            predicted_class=get_monument_name(predicted_class),
+            translated=translated,
+        )
 
 
 if __name__ == "__main__":

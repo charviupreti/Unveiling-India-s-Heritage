@@ -30,9 +30,14 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
 #result {
-    text-align: center;
-    margin-top: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#result p {
+    margin-bottom: 10px; 
 }
 
 #image-container {
@@ -43,4 +48,8 @@ input[type="submit"]:hover {
     margin: 50px;
     display: inline-block;
     max-height: 300px;
+}
+
+select{
+    margin-right: 10px;
 }
