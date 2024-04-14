@@ -7,15 +7,17 @@ import numpy as np
 import io
 from Translate import translate_it
 from Wiki import summarize, get_monument_name
+import os
 
+current_dir = os.path.dirname(__file__)
+model_path = os.path.join(current_dir, "static", "model_with_mobilenetv2_94.41.h5")
+label_mapping_path = os.path.join(current_dir, "static", "label_mapping.pkl")
 
 app = Flask(__name__)
 
-model = tf.keras.models.load_model(
-    "C:/Users/CHARVI UPRETI/Documents/GitHub/Unveiling-India-s-Heritage/flask files/model_with_mobilenetv2_94.72.h5"
-)
+model = tf.keras.models.load_model(model_path)
 with open(
-    "C:/Users/CHARVI UPRETI/Documents/GitHub/Unveiling-India-s-Heritage/flask files/label_mapping.pkl",
+    label_mapping_path,
     "rb",
 ) as f:
     label_mapping = pickle.load(f)
