@@ -2,7 +2,6 @@ from translate import Translator
 from iso639 import Lang
 from langcodes import *
 
-
 def translate_it(text, lang):
     """
     Translates the given text to the specified language.
@@ -22,7 +21,7 @@ def translate_it(text, lang):
     tag = standardize_tag(iso_lang)
 
     # Initialize the translator with the target language
-    translator = Translator(to_lang=tag)
+    translator = Translator(provider="libre", to_lang=tag, base_url="http://localhost:5000")
 
     # Translate the text
     translation = translator.translate(text)
