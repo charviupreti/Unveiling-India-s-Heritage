@@ -33,7 +33,7 @@ def get_monument_name(monument):
     return monument_to_wiki_id[monument]
 
 
-def summarize(monument, lines=5):
+def summarize(monument, lines=10):
     """
     Fetches and returns a summary of the given monument from Wikipedia.
 
