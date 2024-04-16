@@ -27,7 +27,6 @@ with open(
 def index():
     return render_template("index.html", predicted_class=None)
 
-
 @app.route("/predict", methods=["POST"])
 def predict():
     file = request.files["file"]
@@ -42,14 +41,21 @@ def predict():
         predicted_label = model.predict(img_array)
         predicted_class = label_mapping[np.argmax(predicted_label)]
         summary = summarize(predicted_class)
-        lang = request.form.get("language")
-        translated = translate_it(summary[:500], lang)
         return render_template(
+            "index.html",
+            predicted_class=get_monument_name(predicted_class),
+            translated=summary,
+        )
+
+@app.route("/translate", methods=["POST"])
+def translate(summary="None"):
+    lang = request.form.get("language")
+    translated = translate_it(summary, lang)
+    return render_template(
             "index.html",
             predicted_class=get_monument_name(predicted_class),
             translated=translated,
         )
-
-
+    
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
