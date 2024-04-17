@@ -15,6 +15,21 @@
         <input type="submit" value="Predict">
     </form>
 
+
+    <div id="image-container">
+        <img id="uploaded-image" src="#" alt="">
+    </div>
+
+    <div id="result">
+        {% if predicted_class %}
+        <p>Predicted class: {{ predicted_class }}</p>
+        {% endif %}
+        <br />
+        {% if translated %}
+        <p>Translated summary: {{ translated }}</p>
+        {% endif %}
+    </div>
+
     <form id="upload-form1" action="/translate" method="post" enctype="multipart/form-data">
         <select name="language">
             <option value="en">English</option>
@@ -32,26 +47,12 @@
             <option value="pl">Polish</option>
             <option value="sv">Swedish</option>
             <option value="fi">Finnish</option>
-            <option value="no">Norwegian</option>
+            <option value="th">Thai</option>
             <option value="da">Danish</option>
             <option value="el">Greek</option>
         </select>
         <input type="submit" value="Translate">
     </form>
-
-    <div id="image-container">
-        <img id="uploaded-image" src="#" alt="">
-    </div>
-
-    <div id="result">
-        {% if predicted_class %}
-        <p>Predicted class: {{ predicted_class }}</p>
-        {% endif %}
-        <br />
-        {% if translated %}
-        <p>Translated summary: {{ translated }}</p>
-        {% endif %}
-    </div>
 
     <script>
         function previewImage(event) {
