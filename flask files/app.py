@@ -41,6 +41,11 @@ def predict():
         predicted_label = model.predict(img_array)
         predicted_class = label_mapping[np.argmax(predicted_label)]
         summary = summarize(predicted_class)
+        vals={"summary":summary,"predicted":predicted_class}
+        current_dir = os.path.dirname(__file__)
+        file_path = os.path.join(current_dir, "uploads", "saved_values.pkl")
+        with open(file_path,"wb") as file1:
+            pickle.dump(vals,file1)
         return render_template(
             "index.html",
             predicted_class=get_monument_name(predicted_class),
@@ -49,6 +54,12 @@ def predict():
 
 @app.route("/translate", methods=["POST"])
 def translate(summary="None"):
+    current_dir = os.path.dirname(__file__)
+    file_path = os.path.join(current_dir, "uploads", "saved_values.pkl")
+    with open(file_path,"rb") as file2:
+        vals=pickle.load(file2)
+    summary=vals["summary"]
+    predicted_class=vals["predicted"]
     lang = request.form.get("language")
     translated = translate_it(summary, lang)
     return render_template(
@@ -56,6 +67,7 @@ def translate(summary="None"):
             predicted_class=get_monument_name(predicted_class),
             translated=translated,
         )
+    
     
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
