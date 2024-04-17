@@ -1,8 +1,8 @@
 iron_pillar
 golden temple
-alai_darwaza
+tajmahal
 Ajanta Caves
-jamali_kamali_tomb
+Fatehpur Sikri
 Gateway of India
 qutub_minar
 Humayun_s Tomb
@@ -78,7 +78,7 @@ Khajuraho
 victoria memorial
 qutub_minar
 basilica_of_bom_jesus
-iron_pillar
+qutub_minar
 India gate pics
 Humayun_s Tomb
 lotus_temple
@@ -86,7 +86,7 @@ mysore_palace
 golden temple
 charminar
 Humayun_s Tomb
-iron_pillar
+Ajanta Caves
 jamali_kamali_tomb
 alai_minar
 alai_minar
@@ -123,7 +123,7 @@ Gateway of India
 Ajanta Caves
 iron_pillar
 charminar
-Sun Temple Konark
+Ellora Caves
 qutub_minar
 charminar
 alai_minar
@@ -154,7 +154,7 @@ jamali_kamali_tomb
 Gateway of India
 qutub_minar
 victoria memorial
-victoria memorial
+tajmahal
 iron_pillar
 qutub_minar
 Humayun_s Tomb
@@ -255,7 +255,7 @@ tanjavur temple
 Gateway of India
 tanjavur temple
 Sun Temple Konark
-qutub_minar
+Khajuraho
 Sun Temple Konark
 qutub_minar
 jamali_kamali_tomb
@@ -263,7 +263,7 @@ jamali_kamali_tomb
 tanjavur temple
 qutub_minar
 victoria memorial
-jamali_kamali_tomb
+Ajanta Caves
 Humayun_s Tomb
 Charar-E- Sharif
 Sun Temple Konark
@@ -317,6 +317,6 @@ victoria memorial
 alai_minar
 iron_pillar
 charminar
-iron_pillar
+Fatehpur Sikri
 Sun Temple Konark
 Ellora Caves
