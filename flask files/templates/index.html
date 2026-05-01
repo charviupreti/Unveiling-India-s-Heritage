@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <title>Monument Classifier</title>
+</head>
+
+<body>
+    <h1>Monument Classifier</h1>
+    <form id="upload-form" action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" id="file-input" name="file" accept="image/*" onchange="previewImage(event)">
+        <input type="submit" value="Predict">
+    </form>
+
+
+    <div id="image-container">
+        <img id="uploaded-image" src="#" alt="">
+    </div>
+
+    <div id="result">
+        {% if predicted_class %}
+        <p>Predicted class: {{ predicted_class }}</p>
+        {% endif %}
+        <br />
+        {% if translated %}
+        <p>Translated summary: {{ translated }}</p>
+        {% endif %}
+    </div>
+
+    <form id="upload-form1" action="/translate" method="post" enctype="multipart/form-data">
+        <select name="language">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="es">Spanish</option>
+            <option value="it">Italian</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="ru">Russian</option>
+            <option value="hi">Hindi</option>
+            <option value="ar">Arabic</option>
+            <option value="tr">Turkish</option>
+            <option value="nl">Dutch</option>
+            <option value="pl">Polish</option>
+            <option value="sv">Swedish</option>
+            <option value="fi">Finnish</option>
+            <option value="th">Thai</option>
+            <option value="da">Danish</option>
+            <option value="el">Greek</option>
+        </select>
+        <input type="submit" value="Translate">
+    </form>
+
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var image = document.getElementById('uploaded-image');
+                image.src = reader.result;
+                localStorage.setItem('uploadedImage', reader.result);
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        window.onload = function () {
+            var uploadedImageData = localStorage.getItem('uploadedImage');
+            if (uploadedImageData) {
+                var image = document.getElementById('uploaded-image');
+                image.src = uploadedImageData;
+            }
+        };
+    </script>
+
+</body>
+
+</html>
